@@ -6,8 +6,9 @@ const isExist =
 		try {
 			await callback(req);
 			next();
-		} catch (err: any) {
-			res.status(404).json({ message: err.message });
+		} catch (err: unknown) {
+			const error = err as Error;
+			res.status(404).json({ message: error.message });
 		}
 	};
 
