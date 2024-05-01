@@ -12,11 +12,7 @@ export class TodoController {
 	async getTodoById(req: Request, res: Response): Promise<void> {
 		const { id } = req.params;
 		const todo = await this.todoService.findTodoById(id);
-		if (!todo) {
-			res.status(404).json({ message: 'Todo not found' });
-		} else {
-			res.status(200).json(todo);
-		}
+		res.status(200).json(todo);
 	}
 
 	async createTodo(req: Request, res: Response): Promise<void> {
