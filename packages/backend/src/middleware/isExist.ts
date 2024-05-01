@@ -1,3 +1,4 @@
+import { InternalServerError } from '@/utils/custom-errors';
 import { Request, Response, NextFunction } from 'express';
 
 const isExist =
@@ -7,8 +8,12 @@ const isExist =
 			await callback(req);
 			next();
 		} catch (err: unknown) {
-			const error = err as Error;
-			res.status(404).json({ message: error.message });
+			if (err instanceof Error) {
+				const error = err as Error;
+				res.status(404).json({ message: error.message });
+			} else {
+				throw new InternalServerError();
+			}
 		}
 	};
 
