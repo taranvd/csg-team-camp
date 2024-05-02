@@ -7,7 +7,7 @@ export default class TodoService {
 		return await prisma.todo.findMany();
 	}
 
-	async findTodoById(id: string): Promise<Todo | null> {
+	async findById(id: string): Promise<Todo | null> {
 		return await prisma.todo.findUnique({ where: { id } });
 	}
 

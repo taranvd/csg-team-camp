@@ -9,9 +9,9 @@ export class TodoController {
 		res.status(200).json(todos);
 	}
 
-	async getTodoById(req: Request, res: Response): Promise<void> {
+	async getById(req: Request, res: Response): Promise<void> {
 		const { id } = req.params;
-		const todo = await this.todoService.findTodoById(id);
+		const todo = await this.todoService.findById(id);
 		res.status(200).json(todo);
 	}
 

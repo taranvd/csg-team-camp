@@ -1,20 +1,30 @@
-import { InternalServerError } from '@/utils/custom-errors';
+import { TodoService } from '@/services';
+import { InternalServerError, NotFoundError } from '@/utils/custom-errors';
 import { Request, Response, NextFunction } from 'express';
 
-const isExist =
-	<T>(callback: (req: Request) => T | null) =>
-	async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const services = {
+	todo: new TodoService(),
+};
+
+const isExist = (model: keyof typeof services) => {
+	return async (
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<Response | void> => {
 		try {
-			await callback(req);
-			next();
-		} catch (err: unknown) {
-			if (err instanceof Error) {
-				const error = err as Error;
-				res.status(404).json({ message: error.message });
-			} else {
-				throw new InternalServerError();
+			const { id } = req.params;
+			const resource = await services[model].findById(id);
+
+			if (!resource) {
+				throw new NotFoundError(`${model} not found`);
 			}
+
+			next();
+		} catch (error) {
+			throw new InternalServerError(`Internal Server Error: ${error}`);
 		}
 	};
+};
 
 export default isExist;
