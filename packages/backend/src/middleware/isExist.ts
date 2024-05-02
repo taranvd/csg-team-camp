@@ -17,12 +17,12 @@ const isExist = (model: keyof typeof services) => {
 			const resource = await services[model].findById(id);
 
 			if (!resource) {
-				throw new NotFoundError(`${model} not found`);
+				next(new NotFoundError(`${model} not found`));
 			}
 
 			next();
 		} catch (error) {
-			throw new InternalServerError(`Internal Server Error: ${error}`);
+			next(new InternalServerError(`Internal Server Error: ${error}`));
 		}
 	};
 };
