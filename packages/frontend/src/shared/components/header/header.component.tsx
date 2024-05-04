@@ -19,7 +19,11 @@ const Header: FC = () => {
 							</NavLink>
 						</li>
 						<li>
-							<NavLink className={stylesLink} to={'profile/'}>
+							<NavLink
+								className={stylesLink}
+								to={'profile/'}
+								title="My profile"
+							>
 								My profile
 							</NavLink>
 						</li>

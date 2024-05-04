@@ -30,7 +30,13 @@ export const stylesLink = css`
 	color: ${Colors.BLACK};
 	background-color: ${Colors.WHITE};
 
-	&:hover {
+	&:active {
 		opacity: 0.5;
+	}
+
+	${MEDIA_QUERIES.desktop} {
+		&:hover {
+			opacity: 0.5;
+		}
 	}
 `;
