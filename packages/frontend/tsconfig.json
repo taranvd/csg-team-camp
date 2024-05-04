@@ -42,6 +42,9 @@
 			],
 			"~/*": [
 				"src/*"
+			],
+			"~styles/*": [
+				"src/shared/styles/*"
 			]
 		}
 	},

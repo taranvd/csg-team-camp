@@ -1,22 +1,16 @@
-import * as React from 'react';
-
-import Button from '~shared/components/button/button.component';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { PortalProvider } from '@blueprintjs/core';
+import '~/shared/themes/global-styles.css';
+import Router from '~router/router';
 
 const App = (): React.ReactNode => {
-	const [count, setCount] = React.useState(0);
-
-	const onIncrease = (): void => {
-		setCount((prev) => {
-			return prev + 1;
-		});
-	};
-
 	return (
-		<>
-			<h1>Todo project</h1>
-			<p>{count}</p>
-			<Button text="Increase" onClick={onIncrease} />
-		</>
+		<PortalProvider portalClassName="my-custom-class">
+			<BrowserRouter>
+				<Router />
+			</BrowserRouter>
+		</PortalProvider>
 	);
 };
 
