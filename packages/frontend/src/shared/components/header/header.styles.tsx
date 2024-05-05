@@ -7,6 +7,7 @@ export const stylesHeader = css`
 	background-color: ${Colors.GRAY5};
 	padding: ${THEME.sizes.paddings.medium} 0;
 	box-shadow: ${THEME.shadows.small};
+	margin-bottom: ${THEME.sizes.margins.large};
 `;
 
 export const stylesList = css`
