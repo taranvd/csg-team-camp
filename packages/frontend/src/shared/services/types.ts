@@ -4,6 +4,4 @@ export interface Todo {
 	description: string;
 	completed: boolean;
 	isPrivate: boolean;
-	createdAt: Date;
-	updatedAt: Date;
 }

@@ -5,3 +5,8 @@ export interface ITodo {
 	isPrivate: boolean;
 	completed: boolean;
 }
+
+export interface ITodoCreate {
+	title: string;
+	description: string;
+}

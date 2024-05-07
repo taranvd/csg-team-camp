@@ -18,22 +18,18 @@ class TodoService extends HttpService {
 
 	async createTodo(title: string, description: string): Promise<Todo> {
 		const newTodo = await this.post<Todo>({
-			url: '/todos',
+			url: 'todos',
 			data: { title, description },
 		});
 		return newTodo;
 	}
 
-	async updateTodo(
-		id: string,
-		title: string,
-		description: string,
-	): Promise<Todo> {
-		const updatedTodo = await this.put<Todo>({
-			url: `/todos/${id}`,
-			data: { title, description },
+	async updateTodo(id: string, updatedTodo: Partial<Todo>): Promise<Todo> {
+		const updatedData = await this.put<Todo>({
+			url: `todos/${id}`,
+			data: updatedTodo,
 		});
-		return updatedTodo;
+		return updatedData;
 	}
 
 	async deleteTodo(id: string): Promise<Todo> {

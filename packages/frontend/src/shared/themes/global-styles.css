@@ -1,3 +1,7 @@
+@import 'normalize.css';
+@import '@blueprintjs/core/lib/css/blueprint.css';
+@import '@blueprintjs/table/lib/css/table.css';
+
 body {
 	margin: 0;
 	overflow-x: hidden;
@@ -20,7 +24,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
 	margin: 0;
 }
 
@@ -52,6 +57,7 @@ h6 {
 a {
 	display: block;
 	text-decoration: none;
+	color: inherit;
 }
 
 ul,
@@ -95,4 +101,9 @@ input[type='range'] {
 .ReactVirtualized__List::-webkit-scrollbar-thumb {
 	background-color: #d50a84;
 	border-radius: 16px;
+}
+
+.swiper-slide {
+	display: flex;
+	justify-content: center;
 }
