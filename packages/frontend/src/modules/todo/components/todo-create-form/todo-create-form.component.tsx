@@ -6,26 +6,28 @@ import {
 	CreateTodoFormValues,
 } from './todo-create-form.types';
 import FormGroups from '~shared/components/form-groups/form-groups.component';
+import validate from '~/utils/validate';
 
 const CreateTodoForm: React.FC<CreateTodoFormProps> = ({ onSubmit }) => {
 	const handleSubmit = (values: CreateTodoFormValues): void => {
-		try {
-			onSubmit(values);
-		} catch (error) {
-			console.error('Error creating todo:', error);
-		}
+		onSubmit(values);
 	};
 
 	return (
 		<Form
+			validate={validate}
 			onSubmit={handleSubmit}
 			render={({ handleSubmit }) => (
-				<form onSubmit={handleSubmit}>
+				<>
 					<FormGroups />
-					<Button type="submit" intent="primary">
+					<Button
+						onClick={handleSubmit}
+						type="submit"
+						intent="primary"
+					>
 						Create Todo
 					</Button>
-				</form>
+				</>
 			)}
 		/>
 	);

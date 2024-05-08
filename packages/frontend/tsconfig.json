@@ -48,6 +48,9 @@
 			],
 			"~types/*": [
 				"src/shared/types/*"
+			],
+			"~utils/*": [
+				"src/utils/*"
 			]
 		}
 	},

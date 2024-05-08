@@ -1,3 +1,4 @@
+import { Colors } from '@blueprintjs/core';
 import { css } from '@emotion/css';
 import { THEME } from '~shared/themes';
 import { MEDIA_QUERIES } from '~shared/themes/mediaQueries.theme';
@@ -42,6 +43,10 @@ const styles = {
 		&:hover {
 			background-color: #0056b3;
 		}
+	`,
+	error: css`
+		color: ${Colors.RED1};
+		font-size: ${THEME.fonst.sizes.small};
 	`,
 };
 
