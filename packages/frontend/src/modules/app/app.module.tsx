@@ -1,22 +1,27 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { PortalProvider } from '@blueprintjs/core';
+import { Toaster } from 'react-hot-toast';
 
-import Button from '~shared/components/button/button.component';
+import Router from '~router/router';
+import useTodoStore from '~store/todos.store';
+
+import '~/shared/themes/global-styles.css';
 
 const App = (): React.ReactNode => {
-	const [count, setCount] = React.useState(0);
+	const fetchTodos = useTodoStore();
 
-	const onIncrease = (): void => {
-		setCount((prev) => {
-			return prev + 1;
-		});
-	};
+	useEffect(() => {
+		fetchTodos.getAllTodos();
+	}, []);
 
 	return (
-		<>
-			<h1>Todo project</h1>
-			<p>{count}</p>
-			<Button text="Increase" onClick={onIncrease} />
-		</>
+		<PortalProvider portalClassName="my-custom-class">
+			<BrowserRouter>
+				<Router />
+				<Toaster />
+			</BrowserRouter>
+		</PortalProvider>
 	);
 };
 

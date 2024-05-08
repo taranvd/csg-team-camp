@@ -42,6 +42,15 @@
 			],
 			"~/*": [
 				"src/*"
+			],
+			"~styles/*": [
+				"src/shared/styles/*"
+			],
+			"~types/*": [
+				"src/shared/types/*"
+			],
+			"~utils/*": [
+				"src/utils/*"
 			]
 		}
 	},
