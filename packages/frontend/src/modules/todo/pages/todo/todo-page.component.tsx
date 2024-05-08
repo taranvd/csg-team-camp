@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
+import { Button } from '@blueprintjs/core';
+import toast from 'react-hot-toast';
+
 import TodoCompletionToggle from '~modules/todo/components/todo-completion-toggle/todo-completion-toggle';
 import TodoIsPrivateToggle from '~modules/todo/components/todo-isprivate-toggle/todo-isprivate-toggle.component';
+import EditTodoForm from '~modules/todo/components/todo-edit-form/todo-edit-form.component';
+import ModalForm from '~modules/todo/components/todo-modal/todo-modal.component';
+import TodoNotFound from '~modules/todo/components/todo-not-found/todo-not-found.component';
 import { ROUTER_KEYS } from '~shared/keys';
 import { useTodoSelector } from '~store/todos.selectors';
+import useTodoStore from '~store/todos.store';
+
 import {
 	stylesActionsWrapper,
 	stylesDesc,
@@ -11,13 +19,8 @@ import {
 	stylesSubtitle,
 	stylesTitle,
 } from './todo-page.styled';
-import TodoNotFound from '~modules/todo/components/todo-not-found/todo-not-found.component';
-import ModalForm from '~modules/todo/components/todo-modal/todo-modal.component';
-import { Button } from '@blueprintjs/core';
-import EditTodoForm from '~modules/todo/components/todo-edit-form/todo-edit-form.component';
+
 import { ITodo } from '~shared/types/todos.type';
-import useTodoStore from '~store/todos.store';
-import toast from 'react-hot-toast';
 
 const TodoPage: React.FC = () => {
 	const { id } = useParams();

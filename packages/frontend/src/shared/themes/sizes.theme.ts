@@ -17,6 +17,10 @@ export const MARGINS = {
 	enormous: '30px',
 };
 
+export const WIDTH = {
+	normal: '400px',
+};
+
 export const MAX_WIDTH = {
 	mobile: '767px',
 	tablet: '1023px',

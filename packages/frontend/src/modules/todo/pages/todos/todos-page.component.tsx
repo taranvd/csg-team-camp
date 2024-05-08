@@ -1,12 +1,12 @@
-import { Button } from '@blueprintjs/core';
 import React, { useState } from 'react';
+import { Button } from '@blueprintjs/core';
 import toast from 'react-hot-toast';
 import MatchMedia from 'react-responsive';
-import CreateTodoForm from '~modules/todo/components/todo-create-form/todo-create-form.component';
 
+import CreateTodoForm from '~modules/todo/components/todo-create-form/todo-create-form.component';
+import ModalForm from '~modules/todo/components/todo-modal/todo-modal.component';
 import TodoDesktop from '~modules/todo/components/todo-desktop/todo-desktop.component';
 import TodoMobile from '~modules/todo/components/todo-mobile/todo-mobile.component';
-import ModalForm from '~modules/todo/components/todo-modal/todo-modal.component';
 import TodoTablet from '~modules/todo/components/todo-tablet/todo-tablet.component';
 
 import { MEDIA_QUERIES_ALT } from '~shared/themes/mediaQueries.theme';

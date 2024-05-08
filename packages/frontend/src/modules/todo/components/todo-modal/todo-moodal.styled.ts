@@ -1,19 +1,18 @@
-// modalStyles.ts
-
 import { css } from '@emotion/css';
+import { THEME } from '~shared/themes';
 
 export const styles = {
 	modal: css`
-		width: 400px; // Задайте ширину модального вікна
-		padding: 20px; // Задайте відступи всередині модального вікна
+		width: ${THEME.sizes.width.normal};
+		padding: ${THEME.sizes.paddings.huge};
 	`,
 	title: css`
-		font-size: 20px; // Задайте розмір шрифту заголовка
-		margin-bottom: 15px; // Задайте відступ вниз від заголовка
+		font-size: ${THEME.fonst.sizes.large};
+		margin-bottom: ${THEME.sizes.margins.huge};
 	`,
 	buttonContainer: css`
 		display: flex;
-		justify-content: flex-end; // Вирівняйте кнопки вправо
-		margin-top: 20px; // Задайте відступ зверху
+		justify-content: flex-end;
+		margin-top: ${THEME.sizes.margins.huge};
 	`,
 };

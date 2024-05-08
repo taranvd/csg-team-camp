@@ -1,14 +1,6 @@
 import React from 'react';
 import { useRouteError } from 'react-router-dom';
-
-interface RouteError {
-	statusText?: string;
-	message?: string;
-}
-
-interface ErrorPageProps {
-	fallbackMessage?: string;
-}
+import { ErrorPageProps, RouteError } from './error-page.types';
 
 const ErrorPage: React.FC<ErrorPageProps> = ({
 	fallbackMessage = 'An unexpected error has occurred.',
