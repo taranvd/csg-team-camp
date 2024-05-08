@@ -3,6 +3,7 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import { FormGroup, InputGroup } from '@blueprintjs/core';
 import styles from './form-groups.styled';
+import InputError from '../input-error/input-error.component';
 
 const FormGroups: React.FC = () => {
 	return (
@@ -19,11 +20,7 @@ const FormGroups: React.FC = () => {
 								required
 								className={styles.input}
 							/>
-							{meta.error && meta.touched && (
-								<span className={styles.error}>
-									{meta.error}
-								</span>
-							)}
+							<InputError meta={meta} />
 						</>
 					)}
 				</Field>
@@ -37,11 +34,7 @@ const FormGroups: React.FC = () => {
 								placeholder="Enter description"
 								className={styles.input}
 							/>
-							{meta.error && meta.touched && (
-								<span className={styles.error}>
-									{meta.error}
-								</span>
-							)}
+							<InputError meta={meta} />
 						</>
 					)}
 				</Field>

@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import Container from '../container/container.component';
 import { stylesHeader, stylesLink, stylesList } from './header.styles';
+import { ROUTER_KEYS } from '~shared/keys';
 
 const Header: FC = () => {
 	return (
@@ -12,7 +13,7 @@ const Header: FC = () => {
 						<li>
 							<NavLink
 								className={stylesLink}
-								to={'todos/'}
+								to={ROUTER_KEYS.TODOS}
 								title="Todo list"
 							>
 								Todo list

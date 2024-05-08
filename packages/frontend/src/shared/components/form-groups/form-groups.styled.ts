@@ -23,16 +23,16 @@ const styles = {
 	input: css`
 		width: 100%;
 		padding: ${THEME.sizes.paddings.normal};
-		border: 1px solid #ccc;
+		border: 1px solid ${Colors.LIGHT_GRAY1};
 		border-radius: ${THEME.borderRadius.medium};
 		font-size: ${THEME.fonst.sizes.medium};
 		&:focus {
 			outline: none;
-			border-color: #007bff;
+			border-color: ${Colors.BLUE1};
 		}
 	`,
 	button: css`
-		background-color: #007bff;
+		background-color: ${Colors.BLUE1};
 		color: white;
 		border: none;
 		padding: ${THEME.sizes.paddings.medium};
@@ -41,7 +41,7 @@ const styles = {
 		font-size: ${THEME.fonst.sizes.medium};
 
 		&:hover {
-			background-color: #0056b3;
+			background-color: ${Colors.BLUE2};
 		}
 	`,
 	error: css`
