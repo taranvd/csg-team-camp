@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Dialog } from '@blueprintjs/core';
-import { styles } from './todo-moodal.styled';
+import { styles } from './todo-modal.styled';
 
 interface ModalFormProps {
 	isOpen: boolean;
