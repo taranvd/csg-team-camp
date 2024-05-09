@@ -1,8 +1,6 @@
-import { TodoType } from '@/types/todos.type';
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/db/database';
+import { TodoType } from '@/types/todos.types';
 import { Request } from 'express';
-
-const prisma = new PrismaClient();
 
 const findTodoById = async (req: Request): Promise<TodoType | null> => {
 	const { id } = req.params;

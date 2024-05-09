@@ -1,4 +1,3 @@
-import { BadRequestError } from '@/utils/custom-errors';
 import { Request, Response, NextFunction } from 'express';
 import { Schema } from 'joi';
 
@@ -9,7 +8,7 @@ const validateBody = (
 		const { error } = schema.validate(req.body);
 
 		if (error) {
-			next(new BadRequestError(error.message));
+			next(error);
 		}
 
 		next();

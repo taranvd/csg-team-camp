@@ -3,6 +3,9 @@ declare global {
 		interface ProcessEnv {
 			TEST: string;
 			DATABASE_URL: string;
+			SECRET_KEY: string;
+			MAILTRAP_USER: string;
+			MAILTRAP_PASSWORD: string;
 		}
 	}
 }

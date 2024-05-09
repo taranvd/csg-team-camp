@@ -1,5 +1,5 @@
 import { TodoService } from '@/services';
-import { InternalServerError, NotFoundError } from '@/utils/custom-errors';
+import { NotFoundError } from '@/utils/custom-errors';
 import { Request, Response, NextFunction } from 'express';
 
 const services = {
@@ -22,7 +22,7 @@ const isExist = (model: keyof typeof services) => {
 
 			next();
 		} catch (error) {
-			next(new InternalServerError(`Internal Server Error: ${error}`));
+			next(error);
 		}
 	};
 };
