@@ -1,11 +1,10 @@
 import * as React from 'react';
-import App from '~modules/app/app.module';
+import { useRoutes } from 'react-router-dom';
+
+import { routes } from './routes';
 
 const Router: React.FunctionComponent = () => {
-	return (
-		// Implement Routes
-		<App />
-	);
+	return useRoutes(routes);
 };
 
 export default Router;
