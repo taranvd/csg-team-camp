@@ -1,7 +1,7 @@
-import express, { Express, NextFunction, Request, Response } from 'express';
+import express, { Express, Request, Response } from 'express';
 import 'dotenv/config';
-import cors from 'cors'; // Import cors
-import morgan from 'morgan'; // Import morgan
+import cors from 'cors';
+import morgan from 'morgan';
 
 import bodyParser from 'body-parser';
 import AppRouter from './routes';
@@ -20,10 +20,6 @@ router.init();
 
 app.use((req: Request, res: Response) => {
 	res.status(404).json({ message: 'Not found' });
-});
-
-app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
-	res.status(500).json({ message: err.message || 'Internal Server Error' });
 });
 
 app.listen(port, () => {

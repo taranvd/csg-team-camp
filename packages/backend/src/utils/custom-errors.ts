@@ -1,45 +1,45 @@
-export class CustomError extends Error {
-	constructor(
-		public message: string,
-		public statusCode: number,
-	) {
+class CustomErrors extends Error {
+	statusCode: number;
+	constructor(statusCode: number, message: string) {
 		super(message);
-		this.name = this.constructor.name;
-		Error.captureStackTrace(this, this.constructor);
+		this.statusCode = statusCode;
 	}
 }
 
-export class BadRequestError extends CustomError {
+class NotAuthorizedError extends Error {
+	statusCode: number;
+	constructor(message: string) {
+		super(message);
+		this.statusCode = 401;
+	}
+}
+class ConflictError extends Error {
+	statusCode: number;
+	constructor(message: string) {
+		super(message);
+		this.statusCode = 409;
+	}
+}
+class NotFoundError extends Error {
+	statusCode: number;
+	constructor(message: string = 'Not found.') {
+		super(message);
+		this.statusCode = 404;
+	}
+}
+
+class BadRequestError extends Error {
+	statusCode: number;
 	constructor(message: string = 'Bad Request') {
-		super(message, 400);
+		super(message);
+		this.statusCode = 400;
 	}
 }
 
-export class UnauthorizedError extends CustomError {
-	constructor(message: string = 'Unauthorized') {
-		super(message, 401);
-	}
-}
-
-export class ForbiddenError extends CustomError {
-	constructor(message: string = 'Forbidden') {
-		super(message, 403);
-	}
-}
-
-export class NotFoundError extends CustomError {
-	constructor(message: string = 'Not Found') {
-		super(message, 404);
-	}
-}
-
-export class ConflictError extends CustomError {
-	constructor(message: string = 'Conflict') {
-		super(message, 409);
-	}
-}
-export class InternalServerError extends CustomError {
-	constructor(message: string = 'Internal Server Error') {
-		super(message, 500);
-	}
-}
+export {
+	CustomErrors,
+	NotAuthorizedError,
+	ConflictError,
+	NotFoundError,
+	BadRequestError,
+};

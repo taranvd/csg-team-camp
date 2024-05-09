@@ -1,41 +1,31 @@
-import { PrismaClient, Todo } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import prisma from '@/db/database';
+import { Todo } from '@prisma/client';
 
 export default class TodoService {
-	async findAll(): Promise<Todo[]> {
-		return await prisma.todo.findMany();
+	async findAll(ownerId: string): Promise<Todo[]> {
+		return await prisma.todo.findMany({
+			where: { ownerId, isPrivate: false },
+		});
 	}
 
 	async findById(id: string): Promise<Todo | null> {
 		return await prisma.todo.findUnique({ where: { id } });
 	}
 
-	async createTodo(
-		title: string,
-		description: string,
-		completed: boolean,
-		isPrivate: boolean,
-	): Promise<Todo> {
+	async createTodo(ownerId: string, newTodo: Todo): Promise<Todo> {
 		return await prisma.todo.create({
-			data: { title, description, completed, isPrivate },
+			data: { ...newTodo, ownerId },
 		});
 	}
 
-	async updateTodo(
-		id: string,
-		title: string,
-		description: string,
-		completed: boolean,
-		isPrivate: boolean,
-	): Promise<Todo> {
+	async updateTodo(ownerId: string, id: string, todo: Todo): Promise<Todo> {
 		return await prisma.todo.update({
-			where: { id },
-			data: { title, description, completed, isPrivate },
+			where: { id, ownerId },
+			data: todo,
 		});
 	}
 
-	async deleteTodo(id: string): Promise<Todo> {
-		return await prisma.todo.delete({ where: { id } });
+	async deleteTodo(ownerId: string, id: string): Promise<Todo> {
+		return await prisma.todo.delete({ where: { id, ownerId } });
 	}
 }
