@@ -9,7 +9,7 @@ export default class TodoService {
 				OR: [{ isPrivate: false }, { isPrivate: true, ownerId }],
 			},
 			orderBy: {
-				createdAt: 'desc', // Сортуємо за датою створення у порядку спадання
+				createdAt: 'desc',
 			},
 		});
 	}
