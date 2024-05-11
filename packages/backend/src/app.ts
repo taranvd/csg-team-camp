@@ -5,6 +5,8 @@ import morgan from 'morgan';
 
 import bodyParser from 'body-parser';
 import AppRouter from './routes';
+import passport from 'passport';
+import './strategies';
 
 const port = 3030;
 const app: Express = express();
@@ -15,6 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan(formatsLogger));
+
+app.use(passport.initialize());
 
 router.init();
 
