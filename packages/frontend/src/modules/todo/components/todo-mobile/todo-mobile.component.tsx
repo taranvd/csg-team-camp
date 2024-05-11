@@ -5,7 +5,6 @@ import { stylesContaiiner } from './todo-mobile.styles';
 
 const TodoMobile: React.FC = () => {
 	const { todos } = useTodoStore();
-	console.log('todos :', todos);
 
 	return (
 		<ul className={stylesContaiiner}>

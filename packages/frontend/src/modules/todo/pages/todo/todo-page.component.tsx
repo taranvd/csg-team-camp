@@ -6,7 +6,6 @@ import toast from 'react-hot-toast';
 import TodoCompletionToggle from '~modules/todo/components/todo-completion-toggle/todo-completion-toggle';
 import TodoIsPrivateToggle from '~modules/todo/components/todo-isprivate-toggle/todo-isprivate-toggle.component';
 import EditTodoForm from '~modules/todo/components/todo-edit-form/todo-edit-form.component';
-import ModalForm from '~modules/todo/components/todo-modal/todo-modal.component';
 import TodoNotFound from '~modules/todo/components/todo-not-found/todo-not-found.component';
 import { ROUTER_KEYS } from '~shared/keys';
 import { useTodoSelector } from '~store/todos.selectors';
@@ -21,14 +20,16 @@ import {
 } from './todo-page.styled';
 
 import { ITodo } from '~shared/types/todos.type';
+import ModalForm from '~shared/components/modal/modal.component';
 
 const TodoPage: React.FC = () => {
 	const { id } = useParams();
 	const location = useLocation();
 	const { updateTodo } = useTodoStore();
 	const todo = useTodoSelector(id);
-	const backLinkHref = location.state?.from ?? ROUTER_KEYS.TODOS;
 	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const backLinkHref = location.state?.from ?? ROUTER_KEYS.TODOS;
 
 	const openModal = (): void => {
 		setIsModalOpen(true);

@@ -5,15 +5,19 @@ import { MEDIA_QUERIES } from '~shared/themes/mediaQueries.theme';
 
 export const stylesHeader = css`
 	background-color: ${Colors.GRAY5};
+	margin-bottom: ${THEME.sizes.margins.bigest};
 	padding: ${THEME.sizes.paddings.medium} 0;
 	box-shadow: ${THEME.shadows.small};
-	margin-bottom: ${THEME.sizes.margins.large};
 `;
 
 export const stylesList = css`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	& > li:last-child {
+		margin-left: 10px;
+	}
 
 	${MEDIA_QUERIES.tablet} {
 		justify-content: end;

@@ -3,8 +3,12 @@ export const enum ROUTER_KEYS {
 	ALL_MATCH = '/*',
 	TODOS = '/todos',
 	LOGIN = '/login',
-	SIGNUP = '/signup',
+	LOGOUT = '/logout',
+	REGISTER = '/register',
 	PROFILE = '/profile',
+	FORGET_PASSWORD = '/forgot-password',
+	RESET_PASSWORD = '/reset-password',
+	CHANGE_PASSWORD = '/change-password',
 }
 export enum STATUSES_KEYS {
 	ALL = 'all',

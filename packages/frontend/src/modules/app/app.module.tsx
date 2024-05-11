@@ -4,15 +4,15 @@ import { PortalProvider } from '@blueprintjs/core';
 import { Toaster } from 'react-hot-toast';
 
 import Router from '~router/router';
-import useTodoStore from '~store/todos.store';
 
 import '~/shared/themes/global-styles.css';
+import useTodoStore from '~store/todos.store';
 
 const App = (): React.ReactNode => {
-	const fetchTodos = useTodoStore();
+	const { getAllTodos } = useTodoStore();
 
 	useEffect(() => {
-		fetchTodos.getAllTodos();
+		getAllTodos();
 	}, []);
 
 	return (

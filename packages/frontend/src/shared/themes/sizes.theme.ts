@@ -15,6 +15,7 @@ export const MARGINS = {
 	large: '15px',
 	huge: '20px',
 	enormous: '30px',
+	bigest: '50px',
 };
 
 export const WIDTH = {
