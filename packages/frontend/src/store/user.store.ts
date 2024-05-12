@@ -82,7 +82,7 @@ const useUserStore = create<State & Actions>()(
 						token: resp.token,
 						user: resp.user as IUser,
 						isLoading: false,
-						isLoggedIn: true,
+						isAuthenticated: true,
 					}));
 
 					toast.success(
