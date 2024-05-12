@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import todoService from '~shared/services/todo.service';
 import { Todo } from '~shared/services/types';
 import { ITodo, ITodoCreate } from '~shared/types/todos.type';
+import toast from 'react-hot-toast';
 
 interface TodoStore {
 	todos: Todo[];
@@ -35,8 +36,15 @@ const useTodoStore = create<TodoStore>((set) => ({
 				todos: [...state.todos, resp],
 				isLoading: false,
 			}));
+
+			toast.success('Todo successfully created');
 		} catch (error) {
 			set({ isLoading: false, error });
+			const errorMessage =
+				typeof error === 'string'
+					? error
+					: error.message || 'An error occurred while creating todo.';
+			toast.error(errorMessage);
 		}
 	},
 
@@ -50,8 +58,14 @@ const useTodoStore = create<TodoStore>((set) => ({
 				),
 				isLoading: false,
 			}));
+			toast.success('Todo successfully updated');
 		} catch (error) {
 			set({ isLoading: false, error });
+			const errorMessage =
+				typeof error === 'string'
+					? error
+					: error.message || 'An error occurred while updating todo.';
+			toast.error(errorMessage);
 		}
 	},
 
@@ -63,8 +77,14 @@ const useTodoStore = create<TodoStore>((set) => ({
 				todos: state.todos.filter((todo) => todo.id !== id),
 				isLoading: false,
 			}));
+			toast.success('Todo successfully deleted');
 		} catch (error) {
 			set({ isLoading: false, error });
+			const errorMessage =
+				typeof error === 'string'
+					? error
+					: error.message || 'An error occurred while deleting todo.';
+			toast.error(errorMessage);
 		}
 	},
 
@@ -75,6 +95,11 @@ const useTodoStore = create<TodoStore>((set) => ({
 			set({ todos, isLoading: false });
 		} catch (error) {
 			set({ isLoading: false, error });
+			const errorMessage =
+				typeof error === 'string'
+					? error
+					: error.message || 'An error occurred while loading todos.';
+			toast.error(errorMessage);
 		}
 	},
 }));

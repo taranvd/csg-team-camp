@@ -10,9 +10,10 @@ import TodoCompletionToggle from '../todo-completion-toggle/todo-completion-togg
 import { TodoTitles } from './todo-desktop.enum';
 import TodoNotFound from '../todo-not-found/todo-not-found.component';
 import Loader from '~shared/components/loader/loader.component';
+import { Todo } from '~shared/services/types';
 
-const TodoDesktop: React.FC = () => {
-	const { todos, isLoading } = useTodoStore();
+const TodoDesktop: React.FC<{ todos: Todo[] }> = ({ todos }) => {
+	const { isLoading } = useTodoStore();
 
 	return (
 		<>
