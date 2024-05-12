@@ -45,3 +45,9 @@ export const stylesLink = css`
 		}
 	}
 `;
+
+export const styledLinkLogout = css`
+	background-color: ${Colors.RED3} !important;
+	color: ${Colors.WHITE} !important;
+	border-radius: ${THEME.borderRadius.small};
+`;

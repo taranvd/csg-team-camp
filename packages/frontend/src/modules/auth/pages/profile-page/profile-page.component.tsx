@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ProfilePageForm from '~modules/auth/components/profile-page-form-component/profile-page-form.component';
 import { ProfileForm } from '~modules/auth/components/profile-page-form-component/profile-page-form.types';
+import UserInfo from '~modules/auth/components/user-info-components/user-info-components';
 import ModalForm from '~shared/components/modal/modal.component';
 import { ROUTER_KEYS } from '~shared/keys';
 import useUserStore from '~store/user.store';
+import { styles } from './profile-page.styled';
 
 const ProfilePage: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,11 +37,8 @@ const ProfilePage: React.FC = () => {
 	};
 
 	return (
-		<div>
-			<h1>Hello, {user ? user.name : 'unknow'}</h1>
-
-			<p>Name: {user.name}</p>
-			<p>Email: {user.email}</p>
+		<div className={styles.container}>
+			<UserInfo user={user} />
 
 			<Button onClick={openModal}>Edit profile</Button>
 
@@ -51,13 +50,15 @@ const ProfilePage: React.FC = () => {
 				<ProfilePageForm onSubmit={handleSubmit} />
 			</ModalForm>
 
-			<Link to={backLinkHref}>
+			<Link className={styles.link} to={ROUTER_KEYS.CHANGE_PASSWORD}>
 				<Button type="button" intent="primary">
-					Back
+					Change password
 				</Button>
 			</Link>
 
-			<Link to={ROUTER_KEYS.CHANGE_PASSWORD}>Change password</Link>
+			<Link to={backLinkHref}>
+				<Button type="button">Back</Button>
+			</Link>
 		</div>
 	);
 };

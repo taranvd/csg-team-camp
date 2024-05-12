@@ -1,6 +1,7 @@
 import React from 'react';
 import ForgotPasswordForm from '~modules/auth/components/forgot-password-form-component/forgot-password-form.component';
 import useUserStore from '~store/user.store';
+import { styles } from './forgot-password-page.styled';
 
 const ForgotPasswordPage: React.FC = () => {
 	const { forgotPassword } = useUserStore();
@@ -18,7 +19,7 @@ const ForgotPasswordPage: React.FC = () => {
 
 	return (
 		<div>
-			<h2>Forgot Password</h2>
+			<h2 className={styles.title}>Forgot Password</h2>
 			<ForgotPasswordForm onSubmit={handleSubmit} />
 		</div>
 	);

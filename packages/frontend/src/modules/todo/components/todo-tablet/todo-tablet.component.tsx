@@ -10,25 +10,32 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-fade';
+import TodoNotFound from '../todo-not-found/todo-not-found.component';
 
 const TodoTablet: React.FC = () => {
 	const { todos } = useTodoStore();
 
 	return (
-		<Swiper
-			modules={[Navigation, Pagination, Scrollbar]}
-			effect="fade"
-			className={stylesContainer}
-			slidesPerView={1}
-			centeredSlides={true}
-			pagination={{ clickable: true }}
-		>
-			{todos.map((todo) => (
-				<SwiperSlide key={todo.id}>
-					<TodoView todo={todo} />
-				</SwiperSlide>
-			))}
-		</Swiper>
+		<>
+			{todos.length > 0 ? (
+				<Swiper
+					modules={[Navigation, Pagination, Scrollbar]}
+					effect="fade"
+					className={stylesContainer}
+					slidesPerView={1}
+					centeredSlides={true}
+					pagination={{ clickable: true }}
+				>
+					{todos.map((todo) => (
+						<SwiperSlide key={todo.id}>
+							<TodoView todo={todo} />
+						</SwiperSlide>
+					))}
+				</Swiper>
+			) : (
+				<TodoNotFound />
+			)}
+		</>
 	);
 };
 

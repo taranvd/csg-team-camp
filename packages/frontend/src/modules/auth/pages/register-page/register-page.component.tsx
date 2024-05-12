@@ -1,19 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import RegisterForm from '~modules/auth/components/register-form-component/register-form.component';
 import useUserStore from '~store/user.store';
 import { IRegisterForm } from './register-page.types';
-import { useNavigate } from 'react-router-dom';
-import { ROUTER_KEYS } from '~shared/keys';
+import { styles } from './register-page.styled';
 
 const RegisterPage: React.FC = () => {
-	const { register, isRegister } = useUserStore();
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		if (isRegister) {
-			navigate(ROUTER_KEYS.LOGIN);
-		}
-	}, [isRegister]);
+	const { register } = useUserStore();
 
 	const handleSubmit = async (values: IRegisterForm): Promise<void> => {
 		try {
@@ -24,9 +16,10 @@ const RegisterPage: React.FC = () => {
 	};
 
 	return (
-		<>
+		<div>
+			<h1 className={styles.title}>Register</h1>
 			<RegisterForm onSubmit={handleSubmit} />
-		</>
+		</div>
 	);
 };
 

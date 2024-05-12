@@ -2,6 +2,7 @@ import React from 'react';
 import ChangePasswordForm from '~modules/auth/components/change-password-form-component.tsx/change-password-form-component';
 import { ChangePasswordFormValues } from '~modules/auth/components/change-password-form-component.tsx/change-password-form.types';
 import useUserStore from '~store/user.store';
+import { styles } from './change-password-page.styled';
 
 const ChangePasswordPage: React.FC = () => {
 	const { changePassword } = useUserStore();
@@ -17,7 +18,7 @@ const ChangePasswordPage: React.FC = () => {
 	};
 
 	return (
-		<div style={{ maxWidth: '600px' }}>
+		<div className={styles.container}>
 			<h1>Change Password</h1>
 			<ChangePasswordForm onSubmit={handleSubmit} />
 		</div>

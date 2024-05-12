@@ -6,6 +6,7 @@ import useUserStore from '~store/user.store';
 import { ForgotPasswordFormProps } from './forgot-password-form.types';
 import { Link, useLocation } from 'react-router-dom';
 import { ROUTER_KEYS } from '~shared/keys';
+import { styles } from './forgot-password-form.styled';
 
 const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = ({
 	onSubmit,
@@ -27,19 +28,21 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = ({
 							},
 						]}
 					/>
-					<Button
-						onClick={handleSubmit}
-						type="submit"
-						loading={isLoading}
-					>
-						Reset Password
-					</Button>
-
-					<Link to={backLinkHref}>
-						<Button type="button" intent="primary">
-							Back
+					<div className={styles.container}>
+						<Button
+							onClick={handleSubmit}
+							type="submit"
+							loading={isLoading}
+						>
+							Reset Password
 						</Button>
-					</Link>
+
+						<Link to={backLinkHref}>
+							<Button type="button" intent="primary">
+								Back
+							</Button>
+						</Link>
+					</div>
 				</>
 			)}
 		/>

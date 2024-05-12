@@ -9,6 +9,7 @@ import {
 } from '~modules/auth/components/change-password-form-component.tsx/change-password-form.types';
 import FormGroups from '~shared/components/form-groups-user/form-groups.components';
 import { ROUTER_KEYS } from '~shared/keys';
+import { styles } from './change-password-form.styled';
 
 const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({
 	onSubmit,
@@ -35,18 +36,20 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({
 				<>
 					<FormGroups fields={changePasswordField} />
 
-					<Button
-						onClick={handleSubmit}
-						type="submit"
-						intent="primary"
-					>
-						Submit
-					</Button>
-					<Link to={backLinkHref}>
-						<Button type="button" intent="primary">
-							Back
+					<div className={styles.container}>
+						<Button
+							onClick={handleSubmit}
+							type="submit"
+							intent="primary"
+						>
+							Submit
 						</Button>
-					</Link>
+						<Link to={backLinkHref}>
+							<Button type="button" intent="primary">
+								Back
+							</Button>
+						</Link>
+					</div>
 				</>
 			)}
 		/>

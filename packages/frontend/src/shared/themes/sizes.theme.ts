@@ -23,6 +23,7 @@ export const WIDTH = {
 };
 
 export const MAX_WIDTH = {
+	xs: '400px',
 	mobile: '767px',
 	tablet: '1023px',
 	desktop: '1200px',
