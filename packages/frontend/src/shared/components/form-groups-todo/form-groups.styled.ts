@@ -22,8 +22,6 @@ const styles = {
 	`,
 	input: css`
 		width: 100%;
-		padding: ${THEME.sizes.paddings.normal};
-		border: 1px solid ${Colors.LIGHT_GRAY1};
 		border-radius: ${THEME.borderRadius.medium};
 		font-size: ${THEME.fonst.sizes.medium};
 		&:focus {

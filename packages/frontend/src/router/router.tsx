@@ -1,9 +1,17 @@
-import * as React from 'react';
+import React, { useMemo } from 'react';
 import { useRoutes } from 'react-router-dom';
+import { privateRoutes, publicRoutes } from './routes';
+import useUserStore from '~store/user.store';
 
-import { routes } from './routes';
+const Router: React.FC = () => {
+	const { isAuthenticated } = useUserStore();
 
-const Router: React.FunctionComponent = () => {
+	const allRoutes = useMemo(() => {
+		return [...publicRoutes, ...privateRoutes];
+	}, [privateRoutes, publicRoutes]);
+
+	const routes = isAuthenticated ? allRoutes : publicRoutes;
+
 	return useRoutes(routes);
 };
 

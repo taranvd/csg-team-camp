@@ -25,8 +25,10 @@ export default class HttpService {
 	}
 
 	private populateTokenToHeaderConfig(): { Authorization: string | null } {
+		const storage = JSON.parse(localStorage.getItem(STORAGE_KEYS.TOKEN));
+
 		return {
-			Authorization: localStorage.getItem(STORAGE_KEYS.TOKEN),
+			Authorization: `Bearer ${storage.state.token}`,
 		};
 	}
 
@@ -40,15 +42,18 @@ export default class HttpService {
 
 	async get<T>(config: HttpConfig): Promise<T> {
 		const { withAuth = true, ...restConfig } = config;
+
 		const headers = withAuth
 			? { ...this.populateTokenToHeaderConfig() }
 			: {};
+
 		const fullUrl = this.getFullApiUrl(config.url!);
 		try {
 			const response = await this.fetchingService.get(fullUrl, {
 				...this.extractUrlAndDataFromConfig(restConfig),
 				headers,
 			});
+
 			return response.data;
 		} catch (error) {
 			throw error.response ? error.response.data : error;

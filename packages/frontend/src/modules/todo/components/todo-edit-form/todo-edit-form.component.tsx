@@ -3,8 +3,8 @@ import { Form } from 'react-final-form';
 import { Button } from '@blueprintjs/core';
 import { ITodo } from '~shared/types/todos.type';
 import { EditTodoFormProps } from './todo-edit-form.types';
-import FormGroups from '~shared/components/form-groups/form-groups.component';
-import validate from '~/utils/validate';
+import FormGroups from '~shared/components/form-groups-todo/form-groups.component';
+import { validateTodoForm } from '~/utils/validate';
 
 const EditTodoForm: React.FC<EditTodoFormProps> = ({ todo, onSubmit }) => {
 	const initialValues = {
@@ -19,7 +19,7 @@ const EditTodoForm: React.FC<EditTodoFormProps> = ({ todo, onSubmit }) => {
 	return (
 		<Form
 			initialValues={initialValues}
-			validate={validate}
+			validate={validateTodoForm}
 			onSubmit={handleSubmit}
 			render={({ handleSubmit }) => (
 				<>

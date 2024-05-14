@@ -4,7 +4,6 @@ import toast from 'react-hot-toast';
 import MatchMedia from 'react-responsive';
 
 import CreateTodoForm from '~modules/todo/components/todo-create-form/todo-create-form.component';
-import ModalForm from '~modules/todo/components/todo-modal/todo-modal.component';
 import TodoDesktop from '~modules/todo/components/todo-desktop/todo-desktop.component';
 import TodoMobile from '~modules/todo/components/todo-mobile/todo-mobile.component';
 import TodoTablet from '~modules/todo/components/todo-tablet/todo-tablet.component';
@@ -12,6 +11,7 @@ import TodoTablet from '~modules/todo/components/todo-tablet/todo-tablet.compone
 import { MEDIA_QUERIES_ALT } from '~shared/themes/mediaQueries.theme';
 import { ITodoCreate } from '~shared/types/todos.type';
 import useTodoStore from '~store/todos.store';
+import ModalForm from '~shared/components/modal/modal.component';
 
 const TodosPage: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);

@@ -1,83 +1,65 @@
 {
 	"compilerOptions": {
-		"jsx": "react",
 		"baseUrl": ".",
-		"module": "ES2022",
-		"declaration": true,
-		"removeComments": true,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"allowSyntheticDefaultImports": true,
-		"target": "ES2022",
-		"sourceMap": true,
-		"outDir": "./dist",
-		"incremental": true,
-		"useDefineForClassFields": true,
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
+		"jsx": "react",
 		"esModuleInterop": true,
-		"moduleResolution": "node",
-		"composite": true,
-		"types": [
-			"vite/client"
-		],
 		"paths": {
-			"~assets/*": [
-				"src/assets/*"
+			"~assets/*": ["src/assets/*"],
+			"~modules/*": ["src/modules/*"],
+			"~router/*": ["src/router/*"],
+			"~shared/*": ["src/shared/*"],
+			"~store/*": ["src/store/*"],
+			"~typings/*": ["src/typings/*"],
+			"~utils/*": ["src/utils/*"],
+			"~/*": ["src/*"],
+			"~profile/*": ["src/modules/profile/*"],
+			"~generic/*": ["src/modules/generic/*"],
+			"~error/*": ["src/modules/common/pages/error/*"],
+			"~layout/*": ["src/modules/common/pages/layout/*"],
+			"~not-found/*": ["src/modules/common/pages/not-found/*"],
+			"~auth/*": ["src/modules/auth/*"],
+			"~common/*": ["src/modules/common/*"],
+			"~components/*": ["src/modules/auth/components/*"],
+			"~pages/*": ["src/modules/common/pages/*"],
+			"~change-password-page/*": [
+				"src/modules/auth/pages/change-password-page/*"
 			],
-			"~modules/*": [
-				"src/modules/*"
+			"~forgot-password-page/*": [
+				"src/modules/auth/pages/forgot-password-page/*"
 			],
-			"~router/*": [
-				"src/router/*"
+			"~login-page/*": ["src/modules/auth/pages/login-page/*"],
+			"~profile-page/*": ["src/modules/auth/pages/profile-page/*"],
+			"~register-page/*": ["src/modules/auth/pages/register-page/*"],
+			"~reset-password-page/*": [
+				"src/modules/auth/pages/reset-password-page/*"
 			],
-			"~shared/*": [
-				"src/shared/*"
+			"~root-page/*": ["src/modules/auth/pages/root-page/*"],
+			"~auth-layout/*": ["src/modules/common/pages/auth-layout/*"],
+			"~change-password-form-component": [
+				"src/modules/auth/components/change-password-form-component"
 			],
-			"~store/*": [
-				"src/store/*"
+			"~forgot-password-form-component": [
+				"src/modules/auth/components/forgot-password-form-component"
 			],
-			"~typings/*": [
-				"src/typings/*"
+			"~login-form-component": [
+				"src/modules/auth/components/login-form-component"
 			],
-			"~/*": [
-				"src/*"
+			"~private-route-component": [
+				"src/modules/auth/components/private-route-component"
 			],
-			"~styles/*": [
-				"src/shared/styles/*"
+			"~profile-page-form-component": [
+				"src/modules/auth/components/profile-page-form-component"
 			],
-			"~types/*": [
-				"src/shared/types/*"
+			"~register-form-component": [
+				"src/modules/auth/components/register-form-component"
 			],
-			"~utils/*": [
-				"src/utils/*"
+			"~reset-password-form-component": [
+				"src/modules/auth/components/reset-password-form-component"
 			],
-			"~profile/*": [
-				"src/modules/profile/*"
+			"~restricted-route-component": [
+				"src/modules/auth/components/restricted-route-component"
 			],
-			"~generic/*": [
-				"src/modules/generic/*"
-			],
-			"~error/*": [
-				"src/modules/generic/error/*"
-			],
-			"~layout/*": [
-				"src/modules/generic/layout/*"
-			],
-			"~not-found/*": [
-				"src/modules/generic/not-found/*"
-			]
+			"~root-component": ["src/modules/auth/components/root-component"]
 		}
-	},
-	"include": [
-		"./src/**/*",
-		"./vite.config.ts",
-		".eslintrc.cjs"
-	],
-	"exclude": [
-		"./node_modules",
-		"test",
-		"./dist",
-		"**/*spec.ts"
-	]
+	}
 }

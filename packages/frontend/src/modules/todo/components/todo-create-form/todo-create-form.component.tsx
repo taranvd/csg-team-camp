@@ -5,8 +5,8 @@ import {
 	CreateTodoFormProps,
 	CreateTodoFormValues,
 } from './todo-create-form.types';
-import FormGroups from '~shared/components/form-groups/form-groups.component';
-import validate from '~/utils/validate';
+import FormGroups from '~shared/components/form-groups-todo/form-groups.component';
+import { validateTodoForm } from '~/utils/validate';
 
 const CreateTodoForm: React.FC<CreateTodoFormProps> = ({ onSubmit }) => {
 	const handleSubmit = (values: CreateTodoFormValues): void => {
@@ -15,7 +15,7 @@ const CreateTodoForm: React.FC<CreateTodoFormProps> = ({ onSubmit }) => {
 
 	return (
 		<Form
-			validate={validate}
+			validate={validateTodoForm}
 			onSubmit={handleSubmit}
 			render={({ handleSubmit }) => (
 				<>
