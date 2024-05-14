@@ -51,6 +51,21 @@
 			],
 			"~utils/*": [
 				"src/utils/*"
+			],
+			"~profile/*": [
+				"src/modules/profile/*"
+			],
+			"~generic/*": [
+				"src/modules/generic/*"
+			],
+			"~error/*": [
+				"src/modules/generic/error/*"
+			],
+			"~layout/*": [
+				"src/modules/generic/layout/*"
+			],
+			"~not-found/*": [
+				"src/modules/generic/not-found/*"
 			]
 		}
 	},

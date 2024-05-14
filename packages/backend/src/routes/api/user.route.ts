@@ -1,9 +1,10 @@
 import userController from '@/controllers/user/user.controller';
 import { tryCatch, validateBody } from '@/middleware';
-import { auth } from '@/middleware/auth.middleware';
+import { authorizeUser } from '@/middleware/auth.middleware';
 import {
 	changePasswordSchema,
 	resetPasswordSchema,
+	updateCurrentSchema,
 } from '@/schemas/user.schema';
 import { loginSchema, registerSchema } from '@/schemas/user.schema';
 import { Router } from 'express';
@@ -24,20 +25,20 @@ router.post(
 
 router.get(
 	'/current',
-	auth,
+	authorizeUser,
 	tryCatch(userController.current.bind(userController)),
 );
 
 router.put(
 	'/current',
-	auth,
-	validateBody(registerSchema),
-	tryCatch(userController.current.bind(userController)),
+	authorizeUser,
+	validateBody(updateCurrentSchema),
+	tryCatch(userController.updateCurrent.bind(userController)),
 );
 
 router.post(
 	'/logout',
-	auth,
+	authorizeUser,
 	tryCatch(userController.logout.bind(userController)),
 );
 
@@ -48,14 +49,14 @@ router.get(
 
 router.post(
 	'/change-password',
-	auth,
+	authorizeUser,
 	validateBody(changePasswordSchema),
 	tryCatch(userController.changePassword.bind(userController)),
 );
 
 router.post(
 	'/forgot-password',
-	userController.forgotPassword.bind(userController),
+	tryCatch(userController.forgotPassword.bind(userController)),
 );
 
 router.post(

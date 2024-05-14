@@ -73,7 +73,7 @@ export default class UserService {
 	}
 
 	async logout(id: string): Promise<void> {
-		const user = await this.findOne(id);
+		const user = await this.findById(id);
 
 		if (!user) {
 			throw new NotAuthorizedError('Not authorized');
@@ -105,6 +105,14 @@ export default class UserService {
 
 	async updateUser(id: string, data: IUserUpdate): Promise<User> {
 		return await prisma.user.update({ where: { id }, data });
+	}
+
+	async findByEmail(email: string): Promise<void> {
+		const existUser = await prisma.user.findFirst({ where: { email } });
+
+		if (existUser) {
+			throw new BadRequestError('Email is already exist');
+		}
 	}
 
 	async changePassword(
@@ -141,7 +149,11 @@ export default class UserService {
 
 		const resetToken = this.jwtService.generateToken(user, '1h');
 
-		await mailService.sendPasswordResetEmail(email, resetToken);
+		await this.updateUser(user.id, {
+			token: resetToken,
+		});
+
+		await mailService.sendPasswordResetEmail(email, resetToken, user.id);
 	}
 
 	async resetPassword(
@@ -167,6 +179,7 @@ export default class UserService {
 
 	async findById(id: string): Promise<User | null> {
 		const user = await prisma.user.findUnique({ where: { id } });
+
 		return user;
 	}
 }

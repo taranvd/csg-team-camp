@@ -4,7 +4,13 @@ import { Todo } from '@prisma/client';
 export default class TodoService {
 	async findAll(ownerId: string): Promise<Todo[]> {
 		return await prisma.todo.findMany({
-			where: { ownerId, isPrivate: false },
+			where: {
+				ownerId,
+				OR: [{ isPrivate: false }, { isPrivate: true, ownerId }],
+			},
+			orderBy: {
+				createdAt: 'desc',
+			},
 		});
 	}
 
@@ -19,9 +25,14 @@ export default class TodoService {
 	}
 
 	async updateTodo(ownerId: string, id: string, todo: Todo): Promise<Todo> {
+		const currentDate = new Date();
+
 		return await prisma.todo.update({
 			where: { id, ownerId },
-			data: todo,
+			data: {
+				...todo,
+				updatedAt: currentDate,
+			},
 		});
 	}
 

@@ -37,21 +37,21 @@ export class UserController {
 
 	async updateCurrent(req: Request, res: Response): Promise<void> {
 		const { id } = req.user as User;
-		const { name, email, token } = await this.userService.updateUser(
-			id,
-			req.body,
-		);
+		const { name, email } = req.body;
 
-		res.status(200).json({
-			id,
+		await this.userService.findByEmail(email);
+
+		const updatedUser = await this.userService.updateUser(id, {
 			name,
 			email,
-			token,
 		});
+
+		res.status(200).json(updatedUser);
 	}
 
 	async logout(req: Request, res: Response): Promise<void> {
 		const { id } = req.user as User;
+
 		await this.userService.logout(id);
 		res.status(204).send({
 			message: 'Logout success',
@@ -59,8 +59,9 @@ export class UserController {
 	}
 
 	async verify(req: Request, res: Response): Promise<void> {
-		const { verifyToken } = req.params;
-		await this.userService.verify(verifyToken);
+		const { token } = req.params;
+
+		await this.userService.verify(token);
 
 		res.send({ message: 'Verification successful' });
 	}
@@ -82,10 +83,8 @@ export class UserController {
 			message: 'Password reset email has been sent successfully',
 		});
 	}
-
 	async resetPassword(req: Request, res: Response): Promise<void> {
 		const { resetToken, newPassword } = req.body;
-
 		await this.userService.resetPassword(resetToken, newPassword);
 		res.status(200).json({ message: 'Password reset successful' });
 	}

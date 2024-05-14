@@ -1,6 +1,7 @@
 import nodemailer, { SentMessageInfo } from 'nodemailer';
 
-const { SERVER_URL, MAILTRAP_USER, MAILTRAP_PASSWORD } = process.env;
+const { SERVER_URL, MAILTRAP_USER, MAILTRAP_PASSWORD, CLIENT_URL } =
+	process.env;
 
 interface EmailMessage {
 	from: string;
@@ -31,11 +32,20 @@ class EmailService {
 		email: string,
 		verifyToken: string,
 	): Promise<SentMessageInfo> {
+		const verificationLink = `${SERVER_URL}/api/user/verify/${verifyToken}`;
+
 		const message: EmailMessage = {
 			from: 'contact@csgteam.oi',
 			to: email,
-			subject: 'Сonfirm registration',
-			html: `to confirm your registration please click on the <a href='${this.serverURL}/api/user/verify/${verifyToken}'>link</a>`,
+			subject: 'Confirm Registration',
+			html: `
+            <p>Hello,</p>
+            <p>Thank you for registering with us!</p>
+            <p>To complete your registration, please click on the link below:</p>
+            <a href="${verificationLink}">Confirm Registration</a>
+            <p>Best regards,</p>
+            <p>CGS team camp</p>
+        `,
 		};
 		return this.transport.sendMail(message);
 	}
@@ -43,12 +53,23 @@ class EmailService {
 	async sendPasswordResetEmail(
 		email: string,
 		resetToken: string,
+		userId: string,
 	): Promise<SentMessageInfo> {
+		const resetPasswordLink = `${CLIENT_URL}/reset-password?token=${resetToken}&id=${userId}`;
+
 		const message: EmailMessage = {
 			from: 'contact@csgteam.oi',
 			to: email,
 			subject: 'Password Reset',
-			html: `You requested a password reset. Click the link below to reset your password: <a href='${this.serverURL}/reset-password?token=${resetToken}'>link</a>`,
+			html: `
+            <p>Hello,</p>
+            <p>You are receiving this email because a password reset request was made for your account.</p>
+            <p>If you did not request a password reset, you can ignore this email.</p>
+            <p>To reset your password, please follow the link below:</p>
+            <a href="${resetPasswordLink}">Reset password</a>
+            <p>Thank you,</p>
+            <p>CGS team camp</p>
+        `,
 		};
 		return this.transport.sendMail(message);
 	}
