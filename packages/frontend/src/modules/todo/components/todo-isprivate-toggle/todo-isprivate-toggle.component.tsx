@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Switch } from '@blueprintjs/core';
 import useTodoStore from '~store/todos.store';
-import toast from 'react-hot-toast';
 import { TodoToggleProps } from '../todo-completion-toggle/todo-completion-toggle.types';
 import { styledToggler } from './todo-isprivate-toggle.styled';
 
@@ -14,19 +13,13 @@ const TodoIsPrivateToggle: React.FC<TodoToggleProps> = ({ todo }) => {
 			return;
 		}
 
-		try {
-			setIsUpdating(true);
-			const updatePromise = updateTodo(todo.id, {
-				isPrivate: !todo.isPrivate,
-			});
-			await toast.promise(updatePromise, {
-				loading: 'Updating...',
-				success: 'Todo status updated successfully',
-				error: 'Failed to update todo status',
-			});
-		} finally {
-			setIsUpdating(false);
-		}
+		setIsUpdating(true);
+
+		await updateTodo(todo.id, {
+			isPrivate: !todo.isPrivate,
+		});
+
+		setIsUpdating(false);
 	};
 
 	return (

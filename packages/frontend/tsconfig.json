@@ -4,37 +4,81 @@
 		"jsx": "react",
 		"esModuleInterop": true,
 		"paths": {
-			"~assets/*": ["src/assets/*"],
-			"~modules/*": ["src/modules/*"],
-			"~router/*": ["src/router/*"],
-			"~shared/*": ["src/shared/*"],
-			"~store/*": ["src/store/*"],
-			"~typings/*": ["src/typings/*"],
-			"~utils/*": ["src/utils/*"],
-			"~/*": ["src/*"],
-			"~profile/*": ["src/modules/profile/*"],
-			"~generic/*": ["src/modules/generic/*"],
-			"~error/*": ["src/modules/common/pages/error/*"],
-			"~layout/*": ["src/modules/common/pages/layout/*"],
-			"~not-found/*": ["src/modules/common/pages/not-found/*"],
-			"~auth/*": ["src/modules/auth/*"],
-			"~common/*": ["src/modules/common/*"],
-			"~components/*": ["src/modules/auth/components/*"],
-			"~pages/*": ["src/modules/common/pages/*"],
+			"~assets/*": [
+				"src/assets/*"
+			],
+			"~modules/*": [
+				"src/modules/*"
+			],
+			"~router/*": [
+				"src/router/*"
+			],
+			"~shared/*": [
+				"src/shared/*"
+			],
+			"~store/*": [
+				"src/store/*"
+			],
+			"~typings/*": [
+				"src/typings/*"
+			],
+			"~utils/*": [
+				"src/utils/*"
+			],
+			"~/*": [
+				"src/*"
+			],
+			"~profile/*": [
+				"src/modules/profile/*"
+			],
+			"~generic/*": [
+				"src/modules/generic/*"
+			],
+			"~error/*": [
+				"src/modules/common/pages/error/*"
+			],
+			"~layout/*": [
+				"src/modules/common/pages/layout/*"
+			],
+			"~not-found/*": [
+				"src/modules/common/pages/not-found/*"
+			],
+			"~auth/*": [
+				"src/modules/auth/*"
+			],
+			"~common/*": [
+				"src/modules/common/*"
+			],
+			"~components/*": [
+				"src/modules/auth/components/*"
+			],
+			"~pages/*": [
+				"src/modules/common/pages/*"
+			],
 			"~change-password-page/*": [
 				"src/modules/auth/pages/change-password-page/*"
 			],
 			"~forgot-password-page/*": [
 				"src/modules/auth/pages/forgot-password-page/*"
 			],
-			"~login-page/*": ["src/modules/auth/pages/login-page/*"],
-			"~profile-page/*": ["src/modules/auth/pages/profile-page/*"],
-			"~register-page/*": ["src/modules/auth/pages/register-page/*"],
+			"~login-page/*": [
+				"src/modules/auth/pages/login-page/*"
+			],
+			"~profile-page/*": [
+				"src/modules/auth/pages/profile-page/*"
+			],
+			"~register-page/*": [
+				"src/modules/auth/pages/register-page/*"
+			],
 			"~reset-password-page/*": [
 				"src/modules/auth/pages/reset-password-page/*"
 			],
-			"~root-page/*": ["src/modules/auth/pages/root-page/*"],
-			"~auth-layout/*": ["src/modules/common/pages/auth-layout/*"],
+			"~root-page/*": [
+				"src/modules/auth/pages/root-page/*"
+			],
+			"~auth-layout/*": [
+				"src/modules/common/pages/auth-layout/*"
+			],
 			"~change-password-form-component": [
 				"src/modules/auth/components/change-password-form-component"
 			],
@@ -59,7 +103,53 @@
 			"~restricted-route-component": [
 				"src/modules/auth/components/restricted-route-component"
 			],
-			"~root-component": ["src/modules/auth/components/root-component"]
+			"~root-component": [
+				"src/modules/auth/components/root-component"
+			],
+			"~change-password-form-component.tsx/*": [
+				"src/modules/auth/components/change-password-form-component.tsx/*"
+			],
+			"~forgot-password-form-component/*": [
+				"src/modules/auth/components/forgot-password-form-component/*"
+			],
+			"~login-form-component/*": [
+				"src/modules/auth/components/login-form-component/*"
+			],
+			"~private-route-component/*": [
+				"src/modules/auth/components/private-route-component/*"
+			],
+			"~profile-page-form-component/*": [
+				"src/modules/auth/components/profile-page-form-component/*"
+			],
+			"~register-form-component/*": [
+				"src/modules/auth/components/register-form-component/*"
+			],
+			"~reset-password-form-component/*": [
+				"src/modules/auth/components/reset-password-form-component/*"
+			],
+			"~restricted-route-component/*": [
+				"src/modules/auth/components/restricted-route-component/*"
+			],
+			"~root-component/*": [
+				"src/modules/auth/components/root-component/*"
+			],
+			"~user-info-components/*": [
+				"src/modules/auth/components/user-info-components/*"
+			],
+			"~hooks/*": [
+				"src/hooks/*"
+			]
 		}
-	}
+	},
+	"include": [
+		"./src/**/*",
+		"./vite.config.ts",
+		".eslintrc.cjs"
+	],
+	"exclude": [
+		"./node_modules",
+		"test",
+		"./dist",
+		"**/*spec.ts"
+	]
 }

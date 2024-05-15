@@ -4,9 +4,10 @@ import TodoView from '../todo-view/todo-view.component';
 import Loader from '~shared/components/loader/loader.component';
 import TodoNotFound from '../todo-not-found/todo-not-found.component';
 import { stylesContainer } from '../todo-tablet/todo-table.components';
+import { Todo } from '~shared/services/types';
 
-const TodoMobile: React.FC = () => {
-	const { todos, isLoading } = useTodoStore();
+const TodoMobile: React.FC<{ todos: Todo[] }> = ({ todos }) => {
+	const { isLoading } = useTodoStore();
 
 	if (isLoading) {
 		return <Loader />;

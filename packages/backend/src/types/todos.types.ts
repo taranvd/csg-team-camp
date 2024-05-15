@@ -7,3 +7,10 @@ export type TodoType = {
 	createdAt: Date;
 	updatedAt: Date;
 };
+
+export enum STATUSES_KEYS {
+	ALL = 'all',
+	PRIVATE = 'private',
+	PUBLIC = 'public',
+	COMPLETED = 'completed',
+}

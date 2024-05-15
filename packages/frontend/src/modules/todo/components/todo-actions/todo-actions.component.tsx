@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useTodoStore from '~store/todos.store';
-import toast from 'react-hot-toast';
 import { TodoActionsProps } from './todo-actions.types';
 import { styledBtn, styledContainer } from './todo-actions.styles';
 import { Button } from '@blueprintjs/core';
@@ -12,16 +11,9 @@ const TodoActions: React.FC<TodoActionsProps> = ({ todoId }) => {
 
 	const handleDelete = async (): Promise<void> => {
 		setIsDeleting(true);
-		try {
-			const deletePromise = deleteTodo(todoId);
-			await toast.promise(deletePromise, {
-				loading: 'Deleting...',
-				success: 'Todo deleted successfully',
-				error: 'Failed to delete todo',
-			});
-		} finally {
-			setIsDeleting(false);
-		}
+		await deleteTodo(todoId);
+
+		setIsDeleting(false);
 	};
 
 	return (
