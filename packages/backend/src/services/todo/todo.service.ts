@@ -78,8 +78,14 @@ export default class TodoService {
 	async updateTodo(ownerId: string, id: string, todo: Todo): Promise<Todo> {
 		const currentDate = new Date();
 
+		const currentDate = new Date();
+
 		return await prisma.todo.update({
 			where: { id, ownerId },
+			data: {
+				...todo,
+				updatedAt: currentDate,
+			},
 			data: {
 				...todo,
 				updatedAt: currentDate,
